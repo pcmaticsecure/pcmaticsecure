@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Security & Optimization Suite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #f59e0b; /* Amber / Gold accent */
+            --primary-hover: #d97706;
+            --dark-navy: #0f172a;
+            --slate-blue: #1e293b;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --green: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--dark-navy);
+            color: #94a3b8;
+            font-size: 0.85rem;
+            padding: 0.4rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-hover);
+        }
+
+        .btn-cta {
+            background-color: var(--primary-color);
+            color: var(--dark-navy);
+            font-weight: 700;
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary-hover);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--slate-blue) 100%);
+            color: var(--white);
+            padding: 5rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content .tagline {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.6rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid #475569;
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+        }
+
+        .hero-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 420px;
+        }
+
+        .hero-card i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+
+        /* Whitelist Technology Explanation */
+        .tech-banner {
+            background: var(--white);
+            padding: 3.5rem 8%;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .tech-text h2 {
+            font-size: 2rem;
+            color: var(--dark-navy);
+            margin-bottom: 1rem;
+        }
+
+        .tech-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+        }
+
+        .tech-item i {
+            color: var(--green);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 8%;
+            text-align: center;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-box {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .feature-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: #fef3c7;
+            color: var(--primary-hover);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: #f1f5f9;
+            padding: 5rem 8%;
+            text-align: center;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            position: relative;
+        }
+
+        .pricing-card.highlight {
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary-color);
+            color: var(--dark-navy);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .pricing-title {
+            font-size: 1.3rem;
+            color: var(--dark-navy);
+        }
+
+        .pricing-price {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin: 1rem 0;
+        }
+
+        .pricing-price span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.4rem 0;
+            display: flex;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li i {
+            color: var(--green);
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: #94a3b8;
+            padding: 3rem 8% 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .top-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div><span>24/7 Threat Protection & Optimization System</span></div>
+        <div>
+            <a href="#support"><i class="fa-solid fa-headset"></i> Support</a>
+            <a href="#login"><i class="fa-solid fa-user"></i> My Account</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-shield-virus"></i>
+            PCMatic<span>Pro</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#pricing" class="btn-cta">Protect 5 Devices</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tagline">Zero-Trust & Whitelist Protection</span>
+            <h1>Superior Antivirus Protection & Complete PC Tuning</h1>
+            <p>Combine default-deny application security with scheduled PC maintenance. Block ransomware, wipe clutter, and keep your Windows & Mac systems operating at peak performance.</p>
+            <div class="hero-actions">
+                <a href="#pricing" class="btn-cta">Get Started Now</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-card">
+            <i class="fa-solid fa-laptop-medical"></i>
+            <h3 style="margin-bottom: 0.5rem; color: #fff;">Automated Maintenance Active</h3>
+            <p style="font-size: 0.9rem; color: #cbd5e1;">Registry cleaning, software driver updates, and real-time process monitoring running silently.</p>
+        </div>
+    </section>
+
+    <!-- Whitelist Technology Banner -->
+    <section class="tech-banner" id="technology">
+        <div class="tech-grid">
+            <div class="tech-text">
+                <h2>Why Application Whitelisting Works</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Traditional antivirus products react after a threat is discovered. Whitelist technology blocks unknown code execution automatically until verified.</p>
+                <div class="tech-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+        
